@@ -3,6 +3,7 @@ package controladores;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -31,8 +32,15 @@ public class CriarCliente extends HttpServlet {
 	try {
 		ClienteDAO clienteDAO = new ClienteDAO();
 		clienteDAO.criarCliente(cliente);
+		
+		
+		
+		System.out.println(cliente.getNome());
 
-		//res.sendRedirect("LerCliente");
+		req.setAttribute("cliente", cliente);
+		RequestDispatcher dispatcher = req.getRequestDispatcher("lerCliente.jsp");
+		dispatcher.forward(req, res);
+
 	} catch(SQLException e) {
 		e.printStackTrace();
 	}

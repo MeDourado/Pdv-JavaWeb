@@ -44,6 +44,7 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+	
 	public String getCep() {
 		return cep;
 	}
